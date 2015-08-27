@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+    <script type='text/javascript' src="https://x2js.googlecode.com/hg/xml2json.js"></script>
+    <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="ng-infinite-scroll.js"></script>
+
+    <script type='text/javascript'>//<![CDATA[ 
+
+      var myApp = angular.module('myApp', ['infinite-scroll']);
+
+      myApp.service('productCtrl',function($http){
+       
+      var products=[];
+      this.getData = function(arr){
+         products=arr;
+      }
+
+      this.listData=function(){
+        return products;
+      }
+      
+      this.deleteData=function(product){
+        for(var i=0;i<products.length;i++){
+           if(products[i]==product){
+             products.splice(i,1);
+           }
+        }
+      }
+      this.getid=function(product){
+        for(var i=0;i<products.length;i++){
+           if(products[i]==product){
+             return i;
+           }
+        }
+      }
+      this.edit=function(){
+
+      }
+      });
+
+    myApp.controller('DemoController', function($scope,$http,productCtrl) {
+      Init();
+      $scope.allProduct=[];
+      
+      function Init(){
+      $http.get("products.json").success(function (response){
+        productCtrl.getData(response.data);
+
+      $scope.images=[];
+      for(var i=0;i<12;i++){
+        $scope.images.push(productCtrl.listData()[i]);
+      }
+      $scope.allProduct=productCtrl.listData();
+      });
+    }
+
+
+    $scope.deleteUser=function(image){
+      productCtrl.deleteData(image);
+      $scope.images=productCtrl.listData();
+    };
+
+    var ind=-1;
+    var editorcreate="";
+
+    $scope.editUser=function(image){
+      editorcreate="edit";
+      ind= productCtrl.getid(image)
+      $("#myModal").modal();
+    }
+
+    $scope.createUser = function(){
+      editorcreate="create";
+      $("#myModal").modal();
+    }
+
+    $scope.saveUser=function(){
+       // alert($scope.images.length);
+      if(editorcreate=="edit"){
+       $scope.images[ind].fullName=$scope.fullName;
+       $scope.images[ind].shortName=$scope.shortName;
+       $scope.images[ind].imageUrl=$scope.imageUrl;
+       $scope.images[ind].price=$scope.price;
+       }
+      
+       else if(editorcreate=="create"){
+       var temp={};
+       temp.fullName=$scope.fullName;
+       temp.shortName=$scope.shortName;
+       temp.imageUrl=$scope.imageUrl;
+       temp.price=$scope.price;
+       $scope.images.push(temp);
+       }
+       // alert($scope.images.length);    
+    }
+   
+    $scope.loadMore = function(){
+      for(var i=0;i<4;i++){
+        var l=$scope.images.length;
+        console.log($scope.allProduct[l+i-1]);
+        $scope.images.push($scope.allProduct[l+i-1]);
+      }
+     };
+
+});
+</script>
+</head>
+<body ng-app='myApp' ng-controller='DemoController' style="padding-top:100px;">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="opacity:0.8;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Phone World</a>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Product</a></li>
+            <li><a href="#" ng-click="createUser()">Add your own</a></li>
+          </ul>  
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-search"></span> Search: <input type="text" ng-model="search"></a></li>
+          </ul>  
+            <!-- <li><a href="#">Page 3</a></li> -->
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+        <div infinite-scroll="loadMore()" infinite-scroll-distance="0">
+          <div class="row">
+            <div ng-repeat="image in images | filter:search track by $index " class="col-md-3 col-sm-6 col-xs-12">
+                 <p>{{image.fullName}}</p>
+                 <p>{{image.shortName}}</p>
+                 <img height="200px" ng-src='{{image.imageUrl}}'>
+                 <p>{{image.price}}</p>
+                 <button class="btn btn-info" ng-click="editUser(image)">
+                   <span class="glyphicon glyphicon-pencil" ></span>  Edit
+                 </button>
+                 <button class="btn btn-danger" ng-click="deleteUser(image)">
+                   <span class="glyphicon glyphicon-remove" ></span>  Delete
+                 </button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="container">
+  <!-- Trigger the modal with a button -->
+<!--   <button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
+ -->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Edit product</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> fullName</label>
+              <input type="text" class="form-control" id="usrname" ng-model="fullName" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> shortName</label>
+              <input type="text" class="form-control" id="psw" ng-model="shortName" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-search"></span> imageUrl</label>
+              <input type="text" class="form-control" id="imageUrl" ng-model="imageUrl" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> price</label>
+              <input type="text" class="form-control" id="psw" ng-model="price" placeholder="Enter password">
+            </div>
+           <!--  <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div> -->
+              <button type="submit" class="btn btn-success btn-block" ng-click="saveUser()"><span class="glyphicon glyphicon-off"></span> Save</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Not a member? <a href="#">Sign Up</a></p>
+          <p>Forgot <a href="#">Password?</a></p>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+</div>
+ 
+</body>
+</html>
