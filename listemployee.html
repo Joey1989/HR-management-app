@@ -1,0 +1,64 @@
+    <div class="container" ng-controller='DemoController' style="padding-top:100px;">
+        <!-- <div infinite-scroll="loadMore()" infinite-scroll-distance="0"> -->
+          <!-- <div class="constrained"> -->
+            <div class="jumbotron">
+              <table class="table table-striped table-hover" infinite-scroll="loadMore()" >
+                <tr >
+                  <th></th>
+                  <th ng-click="changeOrder('Name')"><p>Name</p></th>
+                  <th ng-click="changeOrder('title')"><p>Title</p></th>
+                  <th ng-click="changeOrder('DirectReports.length')"><p># of Reports</p></th>
+                  <!-- <th><p>Manager</p></th> -->
+                  <th ng-click="changeOrder('address')"><p>Address</p></th>
+                  <th><p>Actions</p></th>
+                </tr>
+              
+                <tr ng-repeat="employee in employees | filter:search | orderBy: term : reverse | limitTo:barLimit">
+                <!-- | filter:search track by $index -->
+                  <td><a href="#/edit/{{employee.id}}" ><img height="150px" ng-src='{{employee.picture}}' popover="Click the photo to edit profile" popover-placement="top" popover-trigger="mouseenter"></img></a></td>
+                  <td><p>{{employee.Name}}</p></td>
+                  <td><p>{{employee.title}}</p></td>
+                  <td><p>{{employee.DirectReports.length}}</p></td>
+                  <!-- <td><p>{{employee.manager}}</p></td> -->
+                  <td><p>{{employee.address}}</p></td>
+                  <td>
+                    <div>
+                      <a class="btn btn-large btn-info" href="#/detail/{{employee.id}}" popover="Click to see detail" popover-placement="right" popover-trigger="mouseenter">
+                        <span class="glyphicon glyphicon-eye-open" ></span>
+                      </a>
+                    </div>
+                 <!--    <div>
+                      <a class="btn btn-large btn-success" href="#/">
+                        <span class="glyphicon glyphicon-arrow-right" ></span>
+                      </a>
+                    </div> -->
+                    <div>
+                      <a class="btn btn-large btn-danger" ng-click="deleteemployee(employee)" popover="Click to delete" popover-placement="right" popover-trigger="mouseenter">
+                        <span class="glyphicon glyphicon-trash" ></span>
+                        </a>
+                    </div>
+                    <div>
+                      <button class="btn btn-success" ng-click="sendMail(employee)" popover="Click to send Email" popover-placement="right" popover-trigger="mouseenter">
+                        <span class="glyphicon glyphicon-envelope" ></span>
+                      </button>
+                    </div>  
+                    <div>
+                      <button class="btn btn-warning" ng-click="sendCall(employee)" popover="Click to call" popover-placement="right" popover-trigger="mouseenter">
+                        <span class="glyphicon glyphicon-phone-alt" ></span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+  <!-- 
+                     <button class="btn btn-info" ng-click="editUser(employee)">
+                       <span class="glyphicon glyphicon-pencil" ></span>  Edit
+                     </button>
+                     <button class="btn btn-danger" ng-click="deleteUser(employee)">
+                       <span class="glyphicon glyphicon-remove" ></span>  Delete
+                     </button> -->
+              </table>
+            <!-- </div> -->
+          <!--   -->
+        </div>
+      </div>

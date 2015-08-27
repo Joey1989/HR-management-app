@@ -1,0 +1,82 @@
+<div class="container" ng-controller="editCtrl" style="padding-top:100px;">
+    <div class="col-md-8 col-md-offset-2" style="text-align:center;">
+    <!-- <h3 ng-show="edit">Create New User:</h3> -->
+    <h3 >Edit existing profile:</h3>
+
+    <form class="form-horizontal">
+      
+      <div class="form-group">
+          <label>Name:</label>      
+        <div>  
+          <input type="text" ng-model="Name"  placeholder="Name" size="40">
+        </div> 
+      </div>
+
+      <div class="form-group">
+          <label>Title:</label>      
+        <div>  
+          <input type="text" ng-model="title"  placeholder="Title" size="40">
+        </div> 
+      </div>  
+      
+      <div class="form-group">
+          <label>Salary:</label>      
+        <div>  
+          <input type="text" ng-model="salary"  placeholder="salary" size="40">
+        </div> 
+      </div> 
+
+      <div class="form-group">
+        <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
+          <label>Select Manager:</label>
+          <div>
+            <select class="form-control" ng-model="managerlist" ng-options=" manager.Name for manager in managers | filter:{ Name : '!' + '{{Name}}' }| orderBy: 'Name'">
+            </select>{{managerlist.id}}
+          </div>
+        </div> 
+      </div> 
+
+      <div class="form-group">
+          <label>SMS:</label>      
+        <div>  
+          <input type="text" ng-model="SMS"  placeholder="SMS" size="40">
+        </div> 
+      </div> 
+
+      <div class="form-group">
+          <label>Call office:</label>      
+        <div>  
+          <input type="text" ng-model="Call_office"  placeholder="Call_office" size="40">
+        </div> 
+      </div>
+
+      <div class="form-group">
+          <label>Email:</label>      
+        <div>  
+          <input type="text" ng-model="Email"  placeholder="Email" size="40">
+        </div> 
+      </div> 
+
+      <div class="form-group">
+          <label>address:</label>      
+        <div>  
+          <input type="text" ng-model="address"  placeholder="Address" size="40">
+        </div> 
+      </div>  
+
+      <div class="form-group">
+          <label>Picture:</label>      
+        <div>  
+          <input type="text" ng-model="picture"  placeholder="Picture" size="40">
+        </div> 
+      </div>
+    </form>
+
+    <hr>
+ 
+    <a href="#/listemployee" class="btn btn-success" ng-disabled="incomplete" ng-click="editEmployee()">
+      <span class="glyphicon glyphicon-save"></span>  Save Changes
+    </a>
+    <hr>
+  </div>
+</div>  

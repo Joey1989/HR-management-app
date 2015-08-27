@@ -1,0 +1,125 @@
+    <div class="container" ng-controller='detailController' style="padding-top:100px;">
+        <!-- <div infinite-scroll="loadMore()" infinite-scroll-distance="0"> -->
+        <div class="jumbotron">        
+            <div class="col-md-4 col-sm-4">
+               <img height="300px" ng-src='{{detail.picture}}' class="img img-responsive"></img>
+            </div>
+            <div class="col-md-8 col-sm-8">
+               <div class="jumbotron">
+                  <h1>{{detail.Name}}</h1>
+                  <h3>{{detail.title}}</h3>
+                  <h3>{{detail.address}}</h3>
+               </div>
+            </div>
+              <table class="table table-striped table-hover">
+    
+                 <!--   <div>
+                      <a class="btn btn-large btn-success" href="#/">
+                        <span class="glyphicon glyphicon-arrow-right" ></span>
+                      </a>
+                    </div> -->
+            
+ 
+                  <tr>
+                    <td>Manager:</td> 
+                    <td>{{managername}}</td>
+                    <td>
+                       <!-- <button class="btn btn-success" ng-click="showManager(detail.manager)">
+                        <span class="glyphicon glyphicon-arrow-right" ></span>
+                      </button> -->
+                      <a class="btn btn-success" href="#/detail/{{detail.manager}}" ng-click="showManager(detail.manager)" ng-hide="managername=='N/A'">
+                        <span class="glyphicon glyphicon-arrow-right" ></span>
+                      </a>
+
+                    </td>
+                  </tr>  
+
+                  <tr>
+                    <td>Direct report(s):</td> 
+                    <td>{{reportsname}}</td>
+                    <td>
+                      <a class="btn btn-success" href="#/showreports" ng-click="showReports(detail.DirectReports)" ng-hide="reportsname=='N/A'">
+                        <span class="glyphicon glyphicon-arrow-right" ></span>
+                      </a>
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Number of reports:</td> 
+                    <td>{{detail.DirectReports.length}}</td>
+                    <td>
+                       <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-user" ></span>
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Salary:</td> 
+                    <td>{{detail.salary}}</td>
+                    <td>
+                       <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-usd" ></span>
+                      </button>
+                    </td>
+                  </tr>  
+                  
+                  <tr>
+                    <td>ID:</td> 
+                    <td>{{detail.id}}</td>
+                    <td>
+                       <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-info-sign" ></span>
+                      </button>
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td>SMS:</td> 
+                    <td>{{detail.SMS}}</td>
+                    <td>
+                       <button class="btn btn-success" ng-click="sendSMS()">
+                        <span class="glyphicon glyphicon-phone" ></span>
+                      </button>
+                    </td>
+                  </tr>
+
+                  
+                  <tr>
+                    <td>Call office:</td> 
+                    <td>{{detail.Call_office}}</td>
+                    <td>
+                       <button class="btn btn-success" ng-click="callOffice()">
+                        <span class="glyphicon glyphicon-phone-alt" ></span>
+                      </button>
+                    </td>
+                  </tr>
+                    
+                  <tr>
+                    <td>Email:</td> 
+                    <td>{{detail.Email}}</td>
+                    <td>
+                       <!-- <form action="MAILTO:zhiyiliu1989@yahoo.com" method="post" enctype="text/plain"> -->
+                         <button class="btn btn-success" ng-click="sendMail()">
+                             <span class="glyphicon glyphicon-envelope" ></span>
+                         </button>
+                         <!-- <input type="submit" class="btn btn-success" value="E"> -->
+                          <!-- <span class="glyphicon glyphicon-envelope" ></span>
+                         </input> -->
+
+                    </td>
+
+                  </tr>
+        
+  <!-- 
+                     <button class="btn btn-info" ng-click="editUser(detail)">
+                       <span class="glyphicon glyphicon-pencil" ></span>  Edit
+                     </button>
+                     <button class="btn btn-danger" ng-click="deleteUser(detail)">
+                       <span class="glyphicon glyphicon-remove" ></span>  Delete
+                     </button> -->
+              </table>
+
+            </div>
+          <!-- </div> -->
+        </div>

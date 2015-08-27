@@ -1,0 +1,108 @@
+{
+ "data":[
+  {  
+    "id" : "1",
+    "picture" : "boss.png",
+    "Name" : "Jack Jones",
+    "title" : "CEO",
+    "salary" : "$40000",
+    "SMS" : "716-8798000",
+    "Call_office" : "888-9064321",
+    "Email" : "asdasd@gamil.com",
+    "address" : "San Jose, CA",
+    "manager" : "-1",
+    "DirectReports" : ["2"]
+  },
+  { 
+    "id" : "2",
+    "picture" : "manager.png",
+    "Name" : "Tom King",
+    "title" : "manager",
+    "salary" : "$10000",
+    "SMS" : "716-8798000",
+    "Call_office" : "888-9064321",
+    "Email" : "asdasd@gamil.com",
+    "address" : "San Jose, CA",
+    "manager" : "1",
+    "DirectReports" : ["3","4"]
+  },
+  { 
+    "id" : "3",
+    "picture" : "staff1.png",
+    "Name" : "Luccy Perna",
+    "title" : "staff",
+    "salary" : "$5000",
+    "SMS" : "716-8798000",
+    "Call_office" : "888-9064321",
+    "Email" : "asdasd@gamil.com",
+    "address" : "San Jose, CA",
+    "manager" : "2",
+    "DirectReports" : []
+  },
+  { 
+    "id" : "4",
+    "picture" : "staff2.png",
+    "Name" : "Joe Bin",
+    "title" : "staff",
+    "salary" : "$5000",
+    "SMS" : "716-8798000",
+    "Call_office" : "888-9064321",
+    "Email" : "asdasd@gamil.com",
+    "address" : "San Jose, CA",
+    "manager" : "2",
+    "DirectReports" : ["5","6","7"]
+  },
+  { 
+    "id" : "5",
+    "picture" : "staff1.png",
+    "Name" : "Marry Jane",
+    "title" : "staff",
+    "salary" : "$7800",
+    "SMS" : "676-8798678",
+    "Call_office" : "888-9064321",
+    "Email" : "asdasd@gamil.com",
+    "address" : "San Jose, CA",
+    "manager" : "4",
+    "DirectReports" : []
+  },
+  { 
+    "id" : "6",
+    "picture" : "staff2.png",
+    "Name" : "Calvin Kosof",
+    "title" : "staff",
+    "salary" : "$2300",
+    "SMS" : "324-8766600",
+    "Call_office" : "888-9064321",
+    "Email" : "asdasd@gamil.com",
+    "address" : "San Jose, CA",
+    "manager" : "4",
+    "DirectReports" : []
+  },
+  { 
+    "id" : "7",
+    "picture" : "staff2.png",
+    "Name" : "Louis Lee",
+    "title" : "staff",
+    "salary" : "$4500",
+    "SMS" : "408-8755500",
+    "Call_office" : "888-9064321",
+    "Email" : "asdasd@gamil.com",
+    "address" : "San Jose, CA",
+    "manager" : "4",
+    "DirectReports" : ["8"]
+  },
+  { 
+    "id" : "8",
+    "picture" : "staff1.png",
+    "Name" : "Claire Taylor",
+    "title" : "intern",
+    "salary" : "$1200",
+    "SMS" : "716-8798000",
+    "Call_office" : "888-9064321",
+    "Email" : "asdasd@gamil.com",
+    "address" : "San Jose, CA",
+    "manager" : "7",
+    "DirectReports" : []
+  }
+  ]
+}

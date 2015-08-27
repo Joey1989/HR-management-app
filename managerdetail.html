@@ -1,0 +1,71 @@
+<div class="container" ng-controller='managerController' style="padding-top:100px;">
+        <!-- <div infinite-scroll="loadMore()" infinite-scroll-distance="0"> -->
+        <div class="jumbotron">
+          <div class="col-md-4 col-sm-4">
+             <a href="#/detail/{{manager.id}}"><img height="300px" ng-src='{{manager.picture}}' class="img img-responsive"></img>
+          </div>
+          <div class="col-md-8 col-sm-8">
+             <div class="jumbotron">
+                <h1>{{manager.Name}}</h1>
+                <h3>{{manager.title}}</h3>
+                <h3>{{manager.address}}</h3>
+             </div>
+          </div>
+          <table class="table table-striped table-hover">
+    
+                 <!--   <div>
+                      <a class="btn btn-large btn-success" href="#/">
+                        <span class="glyphicon glyphicon-arrow-right" ></span>
+                      </a>
+                    </div> -->
+            
+ 
+                  <tr>
+                    <td>Manager:</td> 
+                    <td>{{managername}}</td>
+                  </tr>  
+
+                  <tr>
+                    <td>Direct report(s):</td> 
+                    <td>{{reportsname}}</td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Number of reports:</td> 
+                    <td>{{manager.DirectReports.length}}</td>
+                  </tr>
+                  
+                  <tr>
+                    <td>salary:</td> 
+                    <td>{{manager.salary}}</td>
+                  </tr>  
+                  
+                  
+                  <tr>
+                    <td>SMS:</td> 
+                    <td>{{manager.SMS}}</td>
+                  </tr>
+
+
+                  <tr>
+                    <td>Call office:</td> 
+                    <td>{{manager.Call_office}}</td>
+                  </tr>
+                    
+                  <tr>
+                    <td>Email:</td> 
+                    <td>{{manager.Email}}</td>
+                  </tr>
+        
+  <!-- 
+                     <button class="btn btn-info" ng-click="editUser(manager)">
+                       <span class="glyphicon glyphicon-pencil" ></span>  Edit
+                     </button>
+                     <button class="btn btn-danger" ng-click="deleteUser(manager)">
+                       <span class="glyphicon glyphicon-remove" ></span>  Delete
+                     </button> -->
+              </table>
+
+            </div>
+          <!-- </div> -->
+        </div>

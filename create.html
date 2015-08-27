@@ -1,0 +1,102 @@
+<div class="container" ng-controller="createCtrl" style="padding-top:100px;">
+    <div class="col-md-8 col-md-offset-2" style="text-align:center;">
+    <!-- <h3 ng-show="edit">Create New User:</h3> -->
+    <h3 >Create a new profile:</h3>
+
+    <form class="form-horizontal">
+
+      <div class="form-group">
+          <label>Photo:</label>      
+        <div>  
+          <input type="text" ng-model="picture"  placeholder="Picture" size="40">
+          <a class="btn btn-large btn-info" href="#/camera">
+            <span class="glyphicon glyphicon-camera" ></span>
+          </a>
+        </div> 
+      </div>
+      
+      <div class="form-group">
+          <label>Name:</label>      
+        <div>  
+          <input type="text" ng-model="Name"  placeholder="Name" size="40">
+        </div> 
+      </div>
+
+      <div class="form-group">
+          <label>Title:</label>      
+        <div>  
+          <input type="text" ng-model="title"  placeholder="Title" size="40">
+        </div> 
+      </div>  
+      
+      <div class="form-group">
+          <label>Salary:</label>      
+        <div>  
+          <input type="text" ng-model="salary"  placeholder="salary" size="40">
+        </div> 
+      </div> 
+
+      <!-- <div class="form-group">
+          <label>Manager:</label>      
+        <div>  
+          <input type="text" ng-model="Manager"  placeholder="Manager" size="40">
+        </div> 
+      </div> -->
+
+      <div class="form-group">
+        <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
+          <label>Select Manager:</label>
+          <div>
+            <select class="form-control" ng-model="managerlist" ng-options=" manager.Name for manager in managers | orderBy: 'Name'">
+            </select>{{managerlist.id}}
+          </div>
+        </div> 
+      </div>
+
+
+      <div class="form-group">
+          <label>SMS:</label>      
+        <div>  
+          <input type="text" ng-model="SMS"  placeholder="SMS" size="40">
+        </div> 
+      </div> 
+
+      <div class="form-group">
+          <label>Call office:</label>      
+        <div>  
+          <input type="text" ng-model="Call_office"  placeholder="Call_office" size="40">
+        </div> 
+      </div>
+
+      <div class="form-group">
+          <label>Email:</label>      
+        <div>  
+          <input type="text" ng-model="Email"  placeholder="Email" size="40">
+        </div> 
+      </div> 
+
+      <div class="form-group">
+          <label>address:</label>      
+        <div>  
+          <input type="text" ng-model="address" placeholder="Address" size="40">
+        </div> 
+      </div>  
+
+<!--       <input type="text"  [ng-minlength=3 required]/> -->
+    </form>
+    
+ <!--    <video id="video" width="640" height="480" autoplay></video>
+    <button onclick="startcam()">Start Camera</button>
+    <button id="snap" onclick="take()">Snap Photo</button>
+    <canvas id="canvas" width="640" height="480"></canvas> -->
+   
+    <!-- <camera ng-hide="1"></camera> -->
+
+
+    <hr>
+    <a href="#/listemployee" class="btn btn-warning" ng-disabled="incomplete" ng-click="createEmployee()">
+      <span class="glyphicon glyphicon-user"></span>  Create New User
+    </a>
+   <hr>
+  </div>
+</div>  
